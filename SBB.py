@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+#20160411  change h2 to h1
 __version__ = '0.01'
 __author__  = 'Julien G. (@bfishadow)'
 
@@ -87,7 +87,7 @@ arrBlogPost = strBlogPostID.split(',')
 if strUserOrder != "desc" :
   arrBlogPost.reverse()
 
-intCounter    = 0
+intCounter    = 10000
 strHTML4Index = ""
 
 for strCurrentBlogPostID in arrBlogPost :
@@ -113,7 +113,7 @@ for strCurrentBlogPostID in arrBlogPost :
 
   #Write into local file
   strLocalFilename = "Post_" + str(intCounter) + "_" + strCurrentBlogPostID + ".html"
-  strHTML4Post = "<html>\n<head>\n<meta http-equiv=""Content-Type"" content=""text/html; charset=utf-8"" />\n<title>" + strBlogPostTitle + "</title>\n<link href=""http://simg.sinajs.cn/blog7style/css/conf/blog/article.css"" type=""text/css"" rel=""stylesheet"" />\n</head>\n<body>\n<h2>" + strBlogPostTitle + "</h2>\n<p>By: <em>" + strBlogName + "</em> 原文发布于：<em>" + strBlogPostTime + "</em></p>\n" + strBlogPostBody + "\n<p><a href=""index.html"">返回目录</a></p>\n</body>\n</html>"
+  strHTML4Post = "<html>\n<head>\n<meta http-equiv=""Content-Type"" content=""text/html; charset=utf-8"" />\n<title>" + strBlogPostTitle + "</title>\n<link href=""http://simg.sinajs.cn/blog7style/css/conf/blog/article.css"" type=""text/css"" rel=""stylesheet"" />\n</head>\n<body>\n<h1>" + strBlogPostTitle + "</h1>\n<p>By: <em>" + strBlogName + "</em> 原文发布于：<em>" + strBlogPostTime + "</em></p>\n" + strBlogPostBody + "\n<p><a href=""index.html"">返回目录</a></p>\n</body>\n</html>"
   objFileArticle = open(strLocalFilename, "w")
   objFileArticle.write(strHTML4Post);
   objFileArticle.close
@@ -123,7 +123,7 @@ for strCurrentBlogPostID in arrBlogPost :
   print intCounter , "/", intBlogPostCount
 
 strCurrentTimestamp = str(strftime("%Y-%m-%d %H:%M:%S"))
-strHTML4Index = "<html>\n<head>\n<meta http-equiv=""Content-Type"" content=""text/html; charset=utf-8"" />\n<title>" + strBlogName + "博客文章汇总</title>\n</head>\n<body>\n<h2>新浪博客：" + strBlogName + "</h2>\n<p>共" + str(intBlogPostCount) + "篇文章，最后更新：<em>" + strCurrentTimestamp + "</em></p>\n<ol>\n" + strHTML4Index + "\n</ol>\n</body>\n</html>"
+strHTML4Index = "<html>\n<head>\n<meta http-equiv=""Content-Type"" content=""text/html; charset=utf-8"" />\n<title>" + strBlogName + "博客文章汇总</title>\n</head>\n<body>\n<h1>新浪博客：" + strBlogName + "</h1>\n<p>共" + str(intBlogPostCount) + "篇文章，最后更新：<em>" + strCurrentTimestamp + "</em></p>\n<ol>\n" + strHTML4Index + "\n</ol>\n</body>\n</html>"
 objFileIndex = open("index.html", "w")
 objFileIndex.write(strHTML4Index);
 objFileIndex.close
